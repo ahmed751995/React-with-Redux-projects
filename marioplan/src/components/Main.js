@@ -3,6 +3,9 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Header from './Header';
 import Dashboard from './Dashboard';
 import ProjectDetails from './ProjectDetails';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+import CreateProject from './CreatProject';
 import {projects} from '../shared/projects';
 
 class Main extends Component {
@@ -16,14 +19,17 @@ class Main extends Component {
 	};
 	
 	return(
-	    <div>
+	    <React.Fragment>
 	      <Header />
 	      <Switch>
 		<Route exact path="/" component={()=> <Dashboard projects={projects}/>} />
 		  <Route path ="/project/:id" component ={project}/>
+		  <Route path="/signin" component={SignIn}/>
+		  <Route path="/signup" component={SignUp}/>
+		  <Route path="/createproject" component={CreateProject}/>
 		<Redirect to="/"/>
 	      </Switch>
-	    </div>
+	    </React.Fragment>
 	);
     }
 }

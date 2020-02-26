@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 function ProjectDetails(props) {
     if(props.project != null){
 	return(
@@ -9,7 +9,7 @@ function ProjectDetails(props) {
 		  <h1 className="mt-4">{props.project.title}</h1>
 		  <p className="lead">
 		    by
-		    <a href="#"> {props.project.owner}</a>
+		    <Link to="/"> {props.project.owner}</Link>
 		  </p>
 		  <hr/>
 		  <p>{props.project.date}</p>

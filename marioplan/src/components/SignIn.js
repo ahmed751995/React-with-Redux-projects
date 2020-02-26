@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Row, Col, Label, Button} from 'reactstrap';
 import { Control, LocalForm } from 'react-redux-form';
 
-class CreateProject extends Component {
+class SignIn extends Component {
     
     handleSubmit(values) {
 	console.log('values is'+ JSON.stringify(values));
@@ -16,25 +16,23 @@ class CreateProject extends Component {
 		<div className="col-12">
 		  <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
 		    <Row className="form-group">
-		      <Label className="col-12" htmlFor="title">Project Title</Label>
+		      <Label className="col-12" htmlFor="email"> Email</Label>
 		      <Col>
-			<Control.text model=".title" name="title" id="title"
-				      placeholder="Title" className="form-control"/>
+			<Control.text model=".email" name="email" id="email"
+				      placeholder="Email" className="form-control"/>
 		      </Col>
 		    </Row>
 		    <Row className="form-group">
-		      <Label className="col-12" htmlFor="email"> Email</Label>
+		      <Label className="col-12" htmlFor="password"> password</Label>
 		      <Col>
-			<Control.textarea model=".content" name="content" id="content"
-				      placeholder="Project details" className="form-control"
-				      rows={9}>
-			</Control.textarea>
+			<Control.password  model=".password" name="password" id="password"
+				      placeholder="Last Name" className="form-control"/>
 		      </Col>
 		    </Row>
 		    <Row className="form-group">
 		      <Col>
 			<Button className="btn-lg btn-block" type="submit" color="primary">
-			  Post project
+			  Sign In
 			</Button>
 		      </Col>
 		    </Row>
@@ -46,4 +44,4 @@ class CreateProject extends Component {
     }
 }
 
-export default CreateProject;
+export default SignIn;
