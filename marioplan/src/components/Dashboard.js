@@ -1,56 +1,50 @@
 import React from 'react';
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-function Posts() {
+function Projects({projects}) {
+    let projects_list = projects.map(project => {
+	return(
+	    <Card className="mb-5 text-left" key={project.id}>
+              <CardBody>
+		<CardTitle>
+		  <Link to={`/project/${project.id}`}>
+		    <h2>{project.title}</h2>
+		  </Link>
+		</CardTitle>
+		<CardSubtitle>
+		  <small className="text-muted">{project.owner}</small>
+		</CardSubtitle>
+		<CardText>{project.text}</CardText>
+		<CardText>
+		  <small className="text-muted">{project.date}</small>
+		</CardText>
+              </CardBody>
+	    </Card>
+	);
+    });
     return(
-	<React.Fragment>
-	  <Card className="mb-5">
-            <CardBody>
-              <CardTitle>Project Title</CardTitle>
-              <CardSubtitle>Project Date 3/2/2020</CardSubtitle>
-              <CardText>Card text Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-	       <CardText>
-		<small className="text-muted">Last updated 3 mins ago</small>
-              </CardText>
-            </CardBody>
-	  </Card>
-	  <Card className="mb-5">
-            <CardBody>
-              <CardTitle>Project Title</CardTitle>
-              <CardSubtitle>Project Date 3/2/2020</CardSubtitle>
-              <CardText>Card text Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-	       <CardText>
-		<small className="text-muted">Last updated 3 mins ago</small>
-              </CardText>
-            </CardBody>
-	  </Card>
-	  <Card className="mb-5">
-            <CardBody>
-              <CardTitle>Project Title</CardTitle>
-              <CardSubtitle>owner</CardSubtitle>
-              <CardText>Card text Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-	      <CardText>
-		<small className="text-muted">Last updated 3 mins ago</small>
-              </CardText>
-            </CardBody>
-	  </Card>
-	</React.Fragment>
+	<div>
+	  {projects_list}
+	</div>
     );
 }
 
 function Notifications() {
     return(
+	<div>
 	<p>Notifications</p>
+	</div>
     );
 }
 
 
-function Dashboard() {
+function Dashboard(props) {
     return(
 	<div className="container mt-5">
 	  <div className="row">
 	    <div className="col-12 col-md-6">
-	      <Posts />
+	      <Projects projects={props.projects} />
 	    </div>
 	  <div className="col-12 col-md-6">
 	    <Notifications />
