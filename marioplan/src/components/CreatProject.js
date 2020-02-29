@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
 import {Row, Col, Label, Button} from 'reactstrap';
-import { Control, LocalForm } from 'react-redux-form';
+import { Control, Form } from 'react-redux-form';
 
 class CreateProject extends Component {
+    constructor(props) {
+	super(props);
+	this.handleSubmit = this.handleSubmit.bind(this);
+    }
     
     handleSubmit(values) {
 	console.log('values is'+ JSON.stringify(values));
 	alert(JSON.stringify(values));
+	this.props.resetNewProject();
     }
 
     render() {
@@ -14,7 +19,7 @@ class CreateProject extends Component {
 	    <div className="container mt-3">
 	      <div className="row">
 		<div className="col-12">
-		  <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+		  <Form model="newProject" onSubmit={(values) => this.handleSubmit(values)}>
 		    <Row className="form-group">
 		      <Label className="col-12" htmlFor="title">Project Title</Label>
 		      <Col>
@@ -23,7 +28,7 @@ class CreateProject extends Component {
 		      </Col>
 		    </Row>
 		    <Row className="form-group">
-		      <Label className="col-12" htmlFor="email"> Email</Label>
+		      <Label className="col-12" htmlFor="content">Project Details</Label>
 		      <Col>
 			<Control.textarea model=".content" name="content" id="content"
 				      placeholder="Project details" className="form-control"
@@ -38,7 +43,7 @@ class CreateProject extends Component {
 			</Button>
 		      </Col>
 		    </Row>
-		  </LocalForm>
+		  </Form>
 		</div>
 	      </div>
 	    </div>

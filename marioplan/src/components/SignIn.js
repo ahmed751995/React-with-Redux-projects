@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
 import {Row, Col, Label, Button} from 'reactstrap';
-import { Control, LocalForm } from 'react-redux-form';
+import { Control, Form } from 'react-redux-form';
 
 class SignIn extends Component {
+    constructor(props) {
+	super(props);
+	this.handleSubmit = this.handleSubmit.bind(this);
+    }
     
     handleSubmit(values) {
-	console.log('values is'+ JSON.stringify(values));
-	alert(JSON.stringify(values));
+	console.log('values is '+ JSON.stringify(values));
+	alert('values is '+ JSON.stringify(values));
+	this.props.resetSignIn();
     }
 
     render() {
@@ -14,7 +19,7 @@ class SignIn extends Component {
 	    <div className="container mt-3">
 	      <div className="row">
 		<div className="col-12">
-		  <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+		  <Form model="signInForm" onSubmit={(values) => this.handleSubmit(values)}>
 		    <Row className="form-group">
 		      <Label className="col-12" htmlFor="email"> Email</Label>
 		      <Col>
@@ -26,7 +31,7 @@ class SignIn extends Component {
 		      <Label className="col-12" htmlFor="password"> password</Label>
 		      <Col>
 			<Control.password  model=".password" name="password" id="password"
-				      placeholder="Last Name" className="form-control"/>
+				      placeholder="password" className="form-control"/>
 		      </Col>
 		    </Row>
 		    <Row className="form-group">
@@ -36,7 +41,7 @@ class SignIn extends Component {
 			</Button>
 		      </Col>
 		    </Row>
-		  </LocalForm>
+		  </Form>
 		</div>
 	      </div>
 	    </div>
