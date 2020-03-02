@@ -19,7 +19,6 @@ class SignUp extends Component {
 	const validEmail = (email) => !email || /^[\w]+@[\w]+\.[A-Za-z]{2,4}$/i.test(email);
 	const minLength = (len) => (val) => !val || val.length >= len;
 	const maxLength = (len) => (val) => !val ||  val.length <= len;
-	// const validPassword = (pass) => !pass || /\./.test(pass);
 	      
 	return(
 	    <div className="container mt-3">

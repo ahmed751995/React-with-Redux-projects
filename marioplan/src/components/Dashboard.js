@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Loading} from './Loading';
 
 function Projects({projects}) {
     let projects_list = projects.map(project => {
@@ -40,18 +41,33 @@ function Notifications() {
 
 
 function Dashboard(props) {
-    return(
-	<div className="container mt-5">
-	  <div className="row">
-	    <div className="col-12 col-md-6">
-	      <Projects projects={props.projects} />
+    if(props.isLoading) {
+	return (
+	    <div className="container">
+	      <Loading />
 	    </div>
-	  <div className="col-12 col-md-6">
-	    <Notifications />
-	  </div>
-	  </div>
-	</div>
-    );
+	);
+    }
+    else if(props.errMess) {
+	return (
+	    <div className="container">
+	      <h2>{props.errMess}</h2>
+	    </div>  
+	);
+    }
+    else 
+	return(
+	    <div className="container mt-5">
+	      <div className="row">
+		<div className="col-12 col-md-6">
+		  <Projects projects={props.projects} />
+		</div>
+		<div className="col-12 col-md-6">
+		  <Notifications />
+		</div>
+	      </div>
+	    </div>
+	);
 }
 
 export default Dashboard;
