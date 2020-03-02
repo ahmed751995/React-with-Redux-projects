@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Row, Col, Label, Button} from 'reactstrap';
-import { Control, Form } from 'react-redux-form';
+import { Control, Form, Errors } from 'react-redux-form';
 
 class SignUp extends Component {
     constructor(props) {
@@ -15,6 +15,12 @@ class SignUp extends Component {
     }
 
     render() {
+	const required = (val) => val && val.length;
+	const validEmail = (email) => !email || /^[\w]+@[\w]+\.[A-Za-z]{2,4}$/i.test(email);
+	const minLength = (len) => (val) => !val || val.length >= len;
+	const maxLength = (len) => (val) => !val ||  val.length <= len;
+	// const validPassword = (pass) => !pass || /\./.test(pass);
+	      
 	return(
 	    <div className="container mt-3">
 	      <div className="row">
@@ -24,7 +30,21 @@ class SignUp extends Component {
 		      <Label className="col-12" htmlFor="firstname"> First Name</Label>
 		      <Col>
 			<Control.text model=".firstname" name="firstname" id="firstname"
-				      placeholder="First Name" className="form-control"/>
+				      placeholder="First Name" className="form-control"
+				      validators={{
+					  required, minLength: minLength(3),
+					  maxLength: maxLength(15)
+				      }}/>
+			<Errors
+			  className="text-danger"
+			  model=".firstname"
+			  show="touched"
+			  messages={{
+			      required: "Required ",
+			      minLength: "Must be greater than 2 characters",
+			      maxLength: "Must be 15 characters or less"
+			  }}
+			  />
 		      </Col>
 		    </Row>
 		    
@@ -32,7 +52,21 @@ class SignUp extends Component {
 		      <Label className="col-12" htmlFor="lastname"> Last Name</Label>
 		      <Col>
 			<Control.text model=".lastname" name="lastname" id="lastname"
-				      placeholder="Last Name" className="form-control"/>
+				      placeholder="Last Name" className="form-control"
+				      validators={{
+					  required, minLength: minLength(3),
+					  maxLength: maxLength(15)
+				      }}/>
+			<Errors
+			  className="text-danger"
+			  model=".lastname"
+			  show="touched"
+			  messages={{
+			      required: "Required ",
+			      minLength: "Must be greater than 2 characters",
+			      maxLength: "Must be 15 characters or less"
+			  }}
+			  />
 		      </Col>
 		    </Row>
 
@@ -40,14 +74,37 @@ class SignUp extends Component {
 		      <Label className="col-12" htmlFor="email"> Email</Label>
 		      <Col>
 			<Control.text model=".email" name="email" id="email"
-				      placeholder="Email" className="form-control"/>
+				      placeholder="Email" className="form-control"
+				      validators={{
+					  required, validEmail
+				      }}/>
+			<Errors
+			  className="text-danger"
+			  model=".email"
+			  show="touched"
+			  messages={{
+			      required: "Required ",
+			      validEmail: "Please enter a valid email"
+			  }}
+			  />
 		      </Col>
 		    </Row>
 		    <Row className="form-group">
 		      <Label className="col-12" htmlFor="password"> password</Label>
 		      <Col>
 			<Control.password model=".password" name="password" id="password"
-				      placeholder="Last Name" className="form-control"/>
+					  placeholder="Last Name" className="form-control"
+					  validators={{
+					      required
+					  }}/>
+			<Errors
+			  className="text-danger"
+			  model=".password"
+			  show="touched"
+			  messages={{
+			      required: "Required "
+			  }}
+			  />
 		      </Col>
 		    </Row>
 		    <Row className="form-group">
