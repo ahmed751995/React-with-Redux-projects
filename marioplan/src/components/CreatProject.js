@@ -11,6 +11,7 @@ class CreateProject extends Component {
     handleSubmit(values) {
 	console.log('values is'+ JSON.stringify(values));
 	alert(JSON.stringify(values));
+	this.props.PostProject(values);
 	this.props.resetNewProject();
     }
 

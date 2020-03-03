@@ -8,7 +8,7 @@ import ProjectDetails from './ProjectDetails';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import CreateProject from './CreatProject';
-import { fetchProjects } from '../redux/ActionCreators.js';
+import { fetchProjects, PostProject } from '../redux/ActionCreators.js';
 const mapStateToProps = state =>({
     projects:  state.projects
 });
@@ -17,7 +17,8 @@ const mapDispatchToProps = dispatch => ({
     resetNewProject: () => dispatch(actions.reset('newProject')),
     resetSignIn: () => dispatch(actions.reset('signInForm')),
     resetSingUp: () => dispatch(actions.reset('signUpForm')),
-    fetchProjects: () => dispatch(fetchProjects())
+    fetchProjects: () => dispatch(fetchProjects()),
+    PostProject: (project) => dispatch(PostProject(project))
 });
 
 class Main extends Component {
@@ -56,7 +57,7 @@ class Main extends Component {
 		      <SignUp resetSingUp={this.props.resetSingUp}/>}
 		      />
 		  <Route path="/createproject" component={() =>
-		    <CreateProject resetNewProject={this.props.resetNewProject}/>}
+		    <CreateProject resetNewProject={this.props.resetNewProject} PostProject={this.props.PostProject}/>}
 		    />
 		<Redirect to="/"/>
 	      </Switch>
