@@ -1,5 +1,7 @@
 import * as ActionTypes from './ActionTypes';
-import { projects } from '../shared/projects';
+import { baseUrl } from '../shared/baseUrl';
+
+
 
 export const projectsLoading = () => ({
     type: ActionTypes.PROJECTS_LOADING,
@@ -17,7 +19,22 @@ export const addProjects = (projects) => ({
 
 export const fetchProjects = () => (dispatch) => {
     dispatch(projectsLoading());
-    setTimeout(() => dispatch(addProjects(projects)), 2000);
+    return fetch(baseUrl + 'projects')
+	.then(response => {
+	    if(response.ok) {
+		return response;
+	    } else {
+		var error = new Error('Error ' + response.status + ': ' + response.statusText);
+		error.response = response;
+		throw error;
+	    }
+	}, error => {
+	    var errmess = new Error(error.message);
+	    throw errmess;
+	})
+	.then(response => response.json())
+	.then(projects => dispatch(addProjects(projects)))
+	.catch(error => dispatch(projectsFailed(error.message)));
 };
 
 export const addProject= (project) => ({
@@ -26,11 +43,33 @@ export const addProject= (project) => ({
 });
 
 export const PostProject = (project) => (dispatch) => {
+    let date =  new Date().toISOString();
     let newProject = {
 	title: project.title,
 	owner: 'ahmed',
-	text: project.content,
-	date: '3/1/123'
+	content: project.content,
+	date: date
     };
-    dispatch(addProject(newProject));
+    return fetch(baseUrl+'projects', {
+	method: 'POST',
+	body: JSON.stringify(newProject),
+	headers: {
+	    "Content-type": "application/json"
+	},
+	credentials: "same-origin"
+    })
+	.then(response => {
+	    if(response.ok) return response;
+	    else {
+		var error = new Error('Error '+ response.status + ': ' + response.statusText);
+		error.response = response;
+		throw error;
+	    }
+	}, error => {
+	    var errormess = new Error(error.message);
+	    throw errormess;
+	})
+	.then(response => response.json())
+	.then(project => dispatch(addProject(project)))
+	.catch(error => alert('Can\'t Post your project' + error.message));
 };

@@ -20,10 +20,7 @@ export const Projects = (state = initialState, action) => {
 	return {...state, isLoading: false, errMess: null, projects: action.payload};
 
     case ActionTypes.ADD_PROJECT:
-	let proj = action.payload;
-	proj.id = state.projects.length;
-	console.log('proj is ', proj);
-	return {...state, projects: state.projects.concat(proj)};
+	return {...state, projects: state.projects.concat(action.payload)};
     default:
 	return state;
     }

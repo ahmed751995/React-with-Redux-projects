@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Row, Col, Label, Button} from 'reactstrap';
 import { Control, Form } from 'react-redux-form';
+import { withRouter } from 'react-router-dom';
 
 class CreateProject extends Component {
     constructor(props) {
@@ -9,12 +10,14 @@ class CreateProject extends Component {
     }
     
     handleSubmit(values) {
-	console.log('values is'+ JSON.stringify(values));
-	alert(JSON.stringify(values));
 	this.props.PostProject(values);
 	this.props.resetNewProject();
+	setTimeout(()=> {
+	   this.props.history.push('/');
+	}, 2000);
+	
     }
-
+    
     render() {
 	return(
 	    <div className="container mt-3">
@@ -32,8 +35,8 @@ class CreateProject extends Component {
 		      <Label className="col-12" htmlFor="content">Project Details</Label>
 		      <Col>
 			<Control.textarea model=".content" name="content" id="content"
-				      placeholder="Project details" className="form-control"
-				      rows={9}>
+					  placeholder="Project details" className="form-control"
+					  rows={9}>
 			</Control.textarea>
 		      </Col>
 		    </Row>
@@ -52,4 +55,4 @@ class CreateProject extends Component {
     }
 }
 
-export default CreateProject;
+export default withRouter(CreateProject);

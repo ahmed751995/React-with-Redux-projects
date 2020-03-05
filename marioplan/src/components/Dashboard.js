@@ -16,7 +16,7 @@ function Projects({projects}) {
 		<CardSubtitle>
 		  <small className="text-muted">{project.owner}</small>
 		</CardSubtitle>
-		<CardText>{project.text}</CardText>
+		<CardText>{project.content}</CardText>
 		<CardText>
 		  <small className="text-muted">{project.date}</small>
 		</CardText>

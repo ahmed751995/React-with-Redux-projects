@@ -1,0 +1,32 @@
+{
+  "projects": [
+    {
+      "id": 0,
+      "title": "introductions",
+      "owner": "ahmed",
+      "content": "hi the intro",
+      "date": "2020-09-05T17:57:28.556094Z"
+    },
+    {
+      "title": "ahmed",
+      "owner": "ahmed",
+      "content": "goto school",
+      "date": "2020-03-05T18:06:29.531Z",
+      "id": 1
+    },
+    {
+      "title": "man",
+      "owner": "ahmed",
+      "content": "thanks alot",
+      "date": "2020-03-05T18:07:16.539Z",
+      "id": 2
+    },
+    {
+      "title": "software scrum",
+      "owner": "ahmed",
+      "content": "this is the first project",
+      "date": "2020-03-05T18:08:13.468Z",
+      "id": 3
+    }
+  ]
+}
