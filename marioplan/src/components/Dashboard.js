@@ -43,7 +43,7 @@ function Notifications() {
 function Dashboard(props) {
     if(props.isLoading) {
 	return (
-	    <div className="container">
+	    <div className="row loading">
 	      <Loading />
 	    </div>
 	);
