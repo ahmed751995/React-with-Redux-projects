@@ -19,7 +19,7 @@ class Quotes extends Component {
     }
     
     render() {
-	if(this.props.errmess !== null) {
+	if(this.props.errmess) {
 	    return (
 		<div className="quotes">
 		  <div className="row">
