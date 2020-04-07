@@ -32,10 +32,7 @@ class Markdown extends Component {
 		  <FormGroup row>
 		    <div className="col">
 		      <Input type="textarea" name="text" id="markdown-text" rows={15}
-			     onChange={(e) => {
-				 this.handleChange(e);
-				 this.renderMarkdown();
-			}}/>
+			     onChange={this.handleChange}/>
 		    </div>
 		  </FormGroup>
 		</Form>
