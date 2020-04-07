@@ -6,7 +6,6 @@ class Markdown extends Component {
     constructor(props) {
 	super(props);
 	this.state = {
-	    marked: '',
 	    text: ''
 	};
 	this.renderPreview = this.renderMarkdown.bind(this);
@@ -27,7 +26,7 @@ class Markdown extends Component {
     render() {
 	return(
 	    <div className="row">
-	      <div className="col-12 col-md-6">
+	      <div className="col-6">
 		<Form>
 		  <FormGroup row>
 		    <div className="col">
@@ -37,8 +36,8 @@ class Markdown extends Component {
 		  </FormGroup>
 		</Form>
 	      </div>
-	      <div className="col-12 col-md-6">
-		<div className="preview" dangerouslySetInnerHTML={this.renderMarkdown()}>
+	      <div className="col-6 preview">
+		<div  dangerouslySetInnerHTML={this.renderMarkdown()}>
 		</div>
 	      </div>
 	    </div>

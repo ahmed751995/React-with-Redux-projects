@@ -1,4 +1,25 @@
-.container {
+body,html {
     margin: 0;
     padding: 0;
+    background: #f9f9f9;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.title {
+    color: darkblue;
+}
+
+.main {
+    /* margin-top: 1rem; */
+}
+
+#markdown-text {
+    height: 50vh;
+}
+
+.preview {
+    background: white;
 }
