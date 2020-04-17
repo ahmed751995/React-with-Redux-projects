@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import marked from 'marked';
-import { Input, Form, FormGroup, Label} from 'reactstrap';
+import { Input, Form, FormGroup } from 'reactstrap';
 
 class Markdown extends Component {
     constructor(props) {
