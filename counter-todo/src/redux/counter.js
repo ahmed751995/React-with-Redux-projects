@@ -9,10 +9,13 @@ export const counter = (state = [{value:0, id:0}], action) => {
     	return state.map(s => s.id === parseInt(action.payload)? {...s, value: s.value-1}: s);
 
     case ActionTypes.addCounter:
+	if(state.length === 0) return [...state, {value:0, id:0}];
+	
 	return [...state, {value: 0, id: state[state.length-1].id + 1}];
 
     case ActionTypes.removeCounter:
 	return state.filter(s => s.id !== action.payload);
+	
     default:
 	return state;
     }
