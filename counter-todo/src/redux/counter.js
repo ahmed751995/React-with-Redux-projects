@@ -6,7 +6,7 @@ export const counter = (state = [{value:0, id:0}], action) => {
     	return state.map(s => s.id === action.payload? {...s, value: s.value+1}: s);
 	
     case ActionTypes.Minus:
-    	return state.map(s => s.id === parseInt(action.payload)? {...s, value: s.value-1}: s);
+    	return state.map(s => s.id === action.payload? {...s, value: s.value-1}: s);
 
     case ActionTypes.addCounter:
 	if(state.length === 0) return [...state, {value:0, id:0}];

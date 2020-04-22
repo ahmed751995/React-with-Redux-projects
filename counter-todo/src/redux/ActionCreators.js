@@ -27,3 +27,37 @@ export const removeCounter = (id) => (dispatch) => {
 	payload: id
     });
 };
+
+
+export const addTask = (task) => (dispatch) => {
+    dispatch({
+	type: ActionTypes.addTask,
+	payload: task
+    });
+};
+
+export const toggleTask = (id) => (dispatch) => {
+    dispatch({
+	type: ActionTypes.toggleTask,
+	payload: id
+    });
+};
+
+
+export const active = () => (dispatch) => {
+    dispatch({
+	type: ActionTypes.active
+    });
+};
+
+export const complete = () => (dispatch) => {
+    dispatch({
+	type: ActionTypes.complete
+    });
+};
+
+export const all = () => (dispatch) => {
+    dispatch({
+	type: ActionTypes.all
+    });
+};
