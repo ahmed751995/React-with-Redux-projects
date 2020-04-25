@@ -1,6 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 
-export const todo = (state={tasks:[{task:'home',id:0,complete:false }],
+export const todo = (state={tasks:[],
 			    visibility: "all"}, action) => {
 
     switch(action.type) {

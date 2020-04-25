@@ -4,7 +4,6 @@ import logger from "redux-logger";
 
 import { counter } from "./counter";
 import { todo } from "./todo";
-import { display } from './display';
 
 export const configureStore = () => {
     const store = createStore(

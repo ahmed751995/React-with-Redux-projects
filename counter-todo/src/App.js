@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-
 import './App.css';
 import Main from './components/main';
 import { configureStore } from './redux/configureStore';
+import { BrowserRouter } from "react-router-dom";
 
 const store = configureStore();
 
@@ -11,9 +11,11 @@ class App extends Component {
     render() {
 	return(
 	    <Provider store={store}>
-	      <div className="App">
-		<Main />
-	      </div>
+	      <BrowserRouter>
+		<div className="App">
+		  <Main />
+		</div>
+	      </BrowserRouter>
 	    </Provider>
 	);
     }

@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class Todo extends Component {
 
     displayTasks(tasks, visibility) {
-	if(visibility === "all") return tasks;
-	else if(visibility === "active") return tasks.filter(t => !t.complete );
+	if(visibility === "active") return tasks.filter(t => !t.complete );
 	else if(visibility === "complete") return tasks.filter( t => t.complete);
+	else return tasks;
     };
   
     render() {
